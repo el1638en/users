@@ -20,5 +20,4 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#          SONAR_TOKEN: 0dbbd86aa15f348d985314744170ec128e75ff64
         run: mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=el1638en -Dsonar.projectKey=el1638en_users
