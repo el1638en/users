@@ -14,27 +14,11 @@ jobs:
       - name: Compile with Maven
         run: mvn clean compile
 
-#      - name: Run verify with maven
-#        run: mvn verify
-
       - name: Run Test With Maven
         run: mvn clean test
 
-#      - name: Cache SonarCloud packages
-#        uses: actions/cache@v3
-#        with:
-#          path: ~/.sonar/cache
-#          key: ${{ runner.os }}-sonar
-#          restore-keys: ${{ runner.os }}-sonar
-#      - name: Cache Maven packages
-#        uses: actions/cache@v3
-#        with:
-#          path: ~/.m2
-#          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-#          restore-keys: ${{ runner.os }}-m2
       - name: Build and analyze
         env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_TOKEN: 0dbbd86aa15f348d985314744170ec128e75ff64
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#          SONAR_TOKEN: 0dbbd86aa15f348d985314744170ec128e75ff64
         run: mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=el1638en -Dsonar.projectKey=el1638en_users
